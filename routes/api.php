@@ -21,12 +21,15 @@ Route::get('products',[ProductController::class,'index']);
 Route::get('products/{product}',[ProductController::class,'show']);
 Route::get('products/search/{name}', [ProductController::class,'search']);
 Route::post('register',[AuthController::class,'register']);
+Route::post('login',[AuthController::class,'login']);
 
 //Protected Routes
 Route::group(['middleware' => 'auth:sanctum'],function(){
 Route::post('products',[ProductController::class,'show']);
 Route::delete('products/{product}',[ProductController::class,'destroy']);
 Route::put('products/{product}',[ProductController::class,'update']);
+Route::post('logout',[AuthController::class,'logout']);
+
 
 });
 
